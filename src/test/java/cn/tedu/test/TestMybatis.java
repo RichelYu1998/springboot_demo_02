@@ -44,7 +44,7 @@ public class TestMybatis {
 		System.out.println("入库成功");
 	}
 	//2.用户查询操作
-	//查询name="特朗普"的用户
+	//2.1查询name="特朗普"的用户
 	@Test
 	public void select01(){
 		//定义条件构造器 动态拼接where条件之后的数据
@@ -54,8 +54,7 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
-	//2.用户查询操作
-	//查询sex="女" age>200的用户
+	//2.2查询sex="女" age>200的用户
 	//逻辑运算符 =eq,>gt,<lt,>=ge,<=le
 	@Test
 	public void select02(){
@@ -68,8 +67,7 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
-	//2.用户查询操作
-	//查询name包含"精"的用户 like
+	//2.3查询name包含"精"的用户 like
 	@Test
 	public void select03(){
 		//定义条件构造器 动态拼接where条件之后的数据
@@ -77,6 +75,18 @@ public class TestMybatis {
 		//user.setAge(200);//等于
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
 		queryWrapper.like("name","精");
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
+	}
+	//2.3用户查询操作
+	//查询name包含"精"的用户 like
+	@Test
+	public void select04(){
+		//定义条件构造器 动态拼接where条件之后的数据
+		User user = new User();
+		//user.setAge(200);//等于
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.likeLeft("name","精");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
