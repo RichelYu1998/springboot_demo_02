@@ -1,5 +1,7 @@
 package cn.tedu.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cn.tedu.mapper.UserMapper;
@@ -108,5 +110,25 @@ public class TestMybatis {
 	public void select07(){
 		User user = userMapper.selectById(1);
 		System.out.println(user);
+	}
+	/*//2.8根据非主键查询 返回单个对象
+	@Test
+	public void select08(){
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+		queryWrapper.eq("name","特朗普");
+	}*/
+	//2.9批量查询数据
+	@Test
+	public void select09(){
+		/*List<Integer> idList = new ArrayList<>();*/
+		/*idList.add(1);
+		idList.add(3);
+		idList.add(5);
+		idList.add(8);*/
+		//一般为数组格式
+		Integer[] ids={1,3,5,8};
+		List<Integer> list2= Arrays.asList(ids);
+		List<User> userList = userMapper.selectBatchIds(list2);
+		System.out.println(userList);
 	}
 }
