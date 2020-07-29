@@ -7,6 +7,7 @@ import java.util.List;
 import cn.tedu.mapper.UserMapper;
 import cn.tedu.pojo.User;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -146,4 +147,32 @@ public class TestMybatis {
 		int id = userMapper.deleteById(53);
 		System.out.println(id);
 	}
+	//更新数据库
+	//将id=53的用户信息  改为  name="奥巴马"  age=66
+	@Test
+	public void update01() {
+		//根据主键更新.  要求对象中必须传递主键信息
+		User user = new User();
+		user.setId(53).setName("奥巴马").setAge(66) ;
+		userMapper.updateById(user);
+	}
+
+	//将name=null的用户信息 name改为="测试案例" sex="男" age=1;
+	/**
+	 * 参数:
+	 * 	1.entity  用户赋值封装的对象
+	 *  2.修改的条件构造器
+	 *
+	 * UPDATE user SET sex=?, name=?, age=? WHERE (name IS NULL)
+	 */
+	@Test
+	public void update02() {
+
+		User user = new User();
+		user.setName("测试案例").setAge(1).setSex("男");
+		UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+		updateWrapper.isNull("name");
+		userMapper.update(user, updateWrapper);
+	}
+
 }
