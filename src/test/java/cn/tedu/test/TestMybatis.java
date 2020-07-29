@@ -93,7 +93,7 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
-	//2.5查询name不为null的用户信息，并根据age进行降序排列，如果age相同按sex排序
+	//2.6查询name不为null的用户信息，并根据age进行降序排列，如果age相同按sex排序
 	@Test
 	public void select06(){
 		User user = new User();
@@ -102,5 +102,11 @@ public class TestMybatis {
 		.orderByDesc("age","sex");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
+	}
+	//2.7根据主键查询 返回单个对象
+	@Test
+	public void select07(){
+		User user = userMapper.selectById(1);
+		System.out.println(user);
 	}
 }
