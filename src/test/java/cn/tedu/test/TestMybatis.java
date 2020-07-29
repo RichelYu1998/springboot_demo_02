@@ -68,4 +68,16 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
+	//2.用户查询操作
+	//查询name包含"精"的用户 like
+	@Test
+	public void select03(){
+		//定义条件构造器 动态拼接where条件之后的数据
+		User user = new User();
+		//user.setAge(200);//等于
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.like("name","精");
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
+	}
 }
