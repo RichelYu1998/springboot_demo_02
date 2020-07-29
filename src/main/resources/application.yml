@@ -10,7 +10,7 @@ spring:
     password: Syp950628
 
 mybatis:
-  type-aliases-package: com.jt.demo.pojo
+  type-aliases-package: cn.tedu.pojo
   mapper-locations: classpath:/mybatis/mappers/*.xml
   #开启驼峰映射
   configuration:

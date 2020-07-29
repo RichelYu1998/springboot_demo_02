@@ -1,8 +1,8 @@
-package com.jt.demo.mapper;
+package cn.tedu.mapper;
 
 import java.util.List;
 
-import com.jt.demo.pojo.User;
+import cn.tedu.pojo.User;
 
 public interface UserMapper {
 	

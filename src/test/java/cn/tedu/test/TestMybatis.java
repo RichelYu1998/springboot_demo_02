@@ -1,14 +1,13 @@
-package com.jt.demo.test;
+package cn.tedu.test;
 
 import java.util.List;
 
+import cn.tedu.mapper.UserMapper;
+import cn.tedu.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.jt.demo.mapper.UserMapper;
-import com.jt.demo.pojo.User;
 
 import javax.annotation.Resource;
 

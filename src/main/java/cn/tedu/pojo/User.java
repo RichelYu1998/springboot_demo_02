@@ -1,4 +1,4 @@
-package com.jt.demo.pojo;
+package cn.tedu.pojo;
 
 import lombok.Data;
 

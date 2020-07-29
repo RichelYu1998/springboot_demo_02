@@ -1,11 +1,11 @@
-package com.jt.demo;
+package cn.tedu;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.jt.demo.mapper")	//程序会自动为mybatis创建代理对象
+@MapperScan("cn.tedu.mapper")	//程序会自动为mybatis创建代理对象
 public class Application_Mybatis {
 	
 	//定义主启动类
