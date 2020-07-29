@@ -139,4 +139,11 @@ public class TestMybatis {
 		Integer count = userMapper.selectCount(queryWrapper);
 		System.out.println(count);
 	}
+	//2.用户删除操作
+	//2.1删除id="53"的用户
+	@Test
+	public void delete(){
+		int id = userMapper.deleteById(53);
+		System.out.println(id);
+	}
 }
