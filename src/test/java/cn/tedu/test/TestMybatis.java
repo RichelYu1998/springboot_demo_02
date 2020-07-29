@@ -83,7 +83,6 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
-	//
 	//2.5查询age位于 18-35 and 性别="男" 的用户 between
 	@Test
 	public void select05(){
@@ -91,6 +90,16 @@ public class TestMybatis {
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
 		queryWrapper.between("age",18,35)
 		.eq("sex","男");
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
+	}
+	//2.5查询name不为null的用户信息，并根据age进行降序排列，如果age相同按sex排序
+	@Test
+	public void select06(){
+		User user = new User();
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.isNotNull("name")
+		.orderByDesc("age","sex");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
