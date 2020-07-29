@@ -58,9 +58,7 @@ public class TestMybatis {
 	//逻辑运算符 =eq,>gt,<lt,>=ge,<=le
 	@Test
 	public void select02(){
-		//定义条件构造器 动态拼接where条件之后的数据
 		User user = new User();
-		//user.setAge(200);//等于
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
 		queryWrapper.eq("sex","女");
 		queryWrapper.gt("age","200");
@@ -70,23 +68,29 @@ public class TestMybatis {
 	//2.3查询name包含"精"的用户 like
 	@Test
 	public void select03(){
-		//定义条件构造器 动态拼接where条件之后的数据
 		User user = new User();
-		//user.setAge(200);//等于
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
 		queryWrapper.like("name","精");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
-	//2.3用户查询操作
-	//查询name包含"精"的用户 like
+	//2.4查询name包含"精"的用户 like
 	@Test
 	public void select04(){
-		//定义条件构造器 动态拼接where条件之后的数据
 		User user = new User();
-		//user.setAge(200);//等于
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
 		queryWrapper.likeLeft("name","精");
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
+	}
+	//
+	//2.5查询age位于 18-35 and 性别="男" 的用户 between
+	@Test
+	public void select05(){
+		User user = new User();
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.between("age",18,35)
+		.eq("sex","男");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
