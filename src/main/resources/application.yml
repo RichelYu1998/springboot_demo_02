@@ -9,12 +9,15 @@ spring:
     username: root
     password: Syp950628
 
-mybatis:
+mybatis-plus:
   type-aliases-package: cn.tedu.pojo
   mapper-locations: classpath:/mybatis/mappers/*.xml
   #开启驼峰映射
   configuration:
     map-underscore-to-camel-case: true
+# 引入日志输出
 
-  
-  
+
+logging:
+  level:
+    cn.tedu.mapper: debug

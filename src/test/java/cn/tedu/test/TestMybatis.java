@@ -24,4 +24,10 @@ public class TestMybatis {
 		List<User> userList = userMapper.findAll();
 		System.out.println(userList);
 	}
+	//案例1.利用MP查询所有的数据
+	@Test
+	public void selectList(){
+		List<User> userList = userMapper.selectList(null);
+		System.out.println(userList);
+	}
 }
