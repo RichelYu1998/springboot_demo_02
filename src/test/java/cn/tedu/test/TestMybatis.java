@@ -30,4 +30,15 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectList(null);
 		System.out.println(userList);
 	}
+	//1.用户入库操作
+	//注意：MP操作时，将对象中不为null的数据当做执行操作
+	@Test
+	public void insert(){
+		User user = new User();
+		user.setName("特朗普");
+		user.setAge(60);
+		user.setSex("男");
+		userMapper.insert(user);
+		System.out.println("入库成功");
+	}
 }
