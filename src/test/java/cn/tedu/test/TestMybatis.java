@@ -109,32 +109,37 @@ public class TestMybatis {
 	//2.7根据主键查询 返回单个对象
 	@Test
 	public void select07(){
+		//1.根据主键进行查询    返回值结果单个对象
 		User user = userMapper.selectById(1);
 		System.out.println(user);
+
+		//2.根据非主键的字段查询单个数据
+		QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+		queryWrapper.eq("name", "特朗普");
+		User user2 = userMapper.selectOne(queryWrapper);
+		System.out.println(user2);
 	}
-	/*//2.8根据非主键查询 返回单个对象
+
+	//2.8批量查询数据
 	@Test
 	public void select08(){
-		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-		queryWrapper.eq("name","特朗普");
-	}*/
-	//2.9批量查询数据
-	@Test
-	public void select09(){
-		/*List<Integer> idList = new ArrayList<>();*/
-		/*idList.add(1);
+		//2.8.1 idList 自己进行封装
+		List<Integer> idList = new ArrayList<>();
+		idList.add(1);
 		idList.add(3);
 		idList.add(5);
-		idList.add(8);*/
-		//一般为数组格式
-		Integer[] ids={1,3,5,8};
-		List<Integer> list2= Arrays.asList(ids);
+		idList.add(8);
+		//2.8.2 Id信息一般都是由前端进行传递 所以一般都是数组格式
+		//一般在定义数组格式时,最好采用对象类型
+		Integer[] ids = {1,3,5,8};
+		//需要将数组类型转化为集合
+		List<Integer> list2 = Arrays.asList(ids);
 		List<User> userList = userMapper.selectBatchIds(list2);
 		System.out.println(userList);
 	}
-	//2.10查询name不为null记录总数
+	//2.9查询name不为null记录总数
 	@Test
-	public void select10(){
+	public void select09(){
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 		queryWrapper.isNotNull("name");
 		Integer count = userMapper.selectCount(queryWrapper);
