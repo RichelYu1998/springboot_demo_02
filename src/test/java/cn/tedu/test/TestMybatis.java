@@ -131,4 +131,12 @@ public class TestMybatis {
 		List<User> userList = userMapper.selectBatchIds(list2);
 		System.out.println(userList);
 	}
+	//2.10查询name不为null记录总数
+	@Test
+	public void select10(){
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+		queryWrapper.isNotNull("name");
+		Integer count = userMapper.selectCount(queryWrapper);
+		System.out.println(count);
+	}
 }
