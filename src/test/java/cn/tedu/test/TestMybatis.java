@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.tedu.mapper.UserMapper;
 import cn.tedu.pojo.User;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,7 @@ public class TestMybatis {
 	
 	@Resource
 	private UserMapper userMapper;
-	
+
 	@Test
 	public void testFindUser() {
 		
@@ -40,5 +41,16 @@ public class TestMybatis {
 		user.setSex("男");
 		userMapper.insert(user);
 		System.out.println("入库成功");
+	}
+	//2.用户查询操作
+	//查询name="特朗普"的用户
+	@Test
+	public void select01(){
+		//定义条件构造器 动态拼接where条件之后的数据
+		User user = new User();
+		user.setName("特朗普");
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
 	}
 }
