@@ -33,6 +33,7 @@ public class TestMybatis {
 	}
 	//1.用户入库操作
 	//注意：MP操作时，将对象中不为null的数据当做执行操作
+	//只可以操作"="的要求
 	@Test
 	public void insert(){
 		User user = new User();
@@ -50,6 +51,20 @@ public class TestMybatis {
 		User user = new User();
 		user.setName("特朗普");
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		List<User> userList = userMapper.selectList(queryWrapper);
+		System.out.println(userList);
+	}
+	//2.用户查询操作
+	//查询sex="女" age>200的用户
+	//逻辑运算符 =eq,>gt,<lt,>=ge,<=le
+	@Test
+	public void select02(){
+		//定义条件构造器 动态拼接where条件之后的数据
+		User user = new User();
+		//user.setAge(200);//等于
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.eq("sex","女");
+		queryWrapper.gt("age","200");
 		List<User> userList = userMapper.selectList(queryWrapper);
 		System.out.println(userList);
 	}
